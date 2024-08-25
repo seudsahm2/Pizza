@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import DummyData from './dummydata.json';
 import PizzaDetail from './pizzeriadetail';
 import axios from 'axios'
+import PizzaForm from './pizzeriaform';
 
 class PizzaList extends Component {
     constructor(props){
@@ -55,6 +56,7 @@ class PizzaList extends Component {
                     <PizzaDetail pizzeriaDetail = {this.state.pizzeria} />
                 ) : null
                 }
+                <PizzaForm />
             </div>
         )
     }
