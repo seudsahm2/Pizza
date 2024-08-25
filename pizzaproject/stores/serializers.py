@@ -17,6 +17,7 @@ class PizzeriaListSerializer(serializers.ModelSerializer):
         return reverse('pizzeria_detail', args={obj.pk,})
 
 class PizzeriaDetailSerializer(serializers.ModelSerializer):
+    update = serializers.SerializerMethodField()
     class Meta:
         model = Pizzeria
         fields = [
@@ -31,5 +32,9 @@ class PizzeriaDetailSerializer(serializers.ModelSerializer):
             'description',
             'logo_image',
             'email',
-            'active'
+            'active',
+            'update',
         ]
+    
+    def get_update(self,obj):
+        return reverse('pizzeria_update',args={obj.pk,})
