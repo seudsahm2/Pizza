@@ -23,27 +23,29 @@ class PizzaForm extends Component {
         this.setState({[event.target.name]: event.target.value});
         console.log(this.state.pizzeria_name)
     }
-    handleSubmit(event){
+    
+    handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.pizzeria_name);
-        axios.post("http://127.0.0.1:8080/create/",{
-            pizzeria_name:this.state.pizzeria_name,
-            street : this.state.street,
+        axios.post(process.env.REACT_APP_URL.concat('/create/'), {
+            pizzeria_name: this.state.pizzeria_name,
+            street: this.state.street,
             city: this.state.city,
-            state:this.state.state,
-            zip_code:this.state.zip_code,
-            website:this.state.website,
-            phone_number:this.state.phone_number,
-            description:this.state.description,
-            email:this.state.email,
+            state: this.state.state,
+            zip_code: this.state.zip_code,
+            website: this.state.website,
+            phone_number: this.state.phone_number,
+            description: this.state.description,
+            email: this.state.email,
         })
         .then((response) => {
             console.log(response);
         })
-        .catch(function (error){
+        .catch(function (error) {
             console.log(error);
-        })
+        });
     }
+    
     render(){
         const {pizzeria_name,street,city,state,zip_code,website,phone_number,description,email,} = this.state
         return(

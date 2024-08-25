@@ -31,13 +31,13 @@ class PizzaUpdate extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { obj_to_update } = this.state;
-
+    
         if (!obj_to_update || !obj_to_update.update) {
             console.error("The update URL is not defined.");
             return;
         }
-
-        axios.patch(`http://127.0.0.1:8080${obj_to_update.update}`, {
+    
+        axios.patch(process.env.REACT_APP_URL.concat(obj_to_update.update), {
             pizzeria_name: this.state.pizzeria_name,
             street: this.state.street,
             city: this.state.city,
@@ -55,6 +55,7 @@ class PizzaUpdate extends Component {
             console.log(error);
         });
     }
+    
 
     render() {
         const { pizzeria_name, street, city, state, zip_code, website, phone_number, description, email } = this.state;
