@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+
+import pizza from './pizza_image2.png'
 import './App.css';
+import PizzaList from './pizzerias/pizzeriaslist'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={pizza} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Web app for pizza lovers
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Pizza vs Pizza
+        </h1>
+        <PizzaList />
       </header>
+      
     </div>
   );
 }
