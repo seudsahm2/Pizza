@@ -13,9 +13,18 @@ class Pizzeria(models.Model):
         validators=[RegexValidator(regex=r'^\d{9,10}$')], max_length=10,blank=True
     )
     description = models.TextField(blank=True)
-    logo_image = models.ImageField(upload_to='pizzariaImages',blank=True)
+    logo_image = models.ImageField(upload_to='pizzariaImages',blank=True, default="pizzariImages/pizza_image2.png")
     email = models.EmailField(max_length=254, blank=True)
     active = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return "{}, {}".format(self.pizzeria_name,self.city)
+    
+class Image(models.Model):
+    pizzeria = models.ForeignKey(Pizzeria, on_delete = models.CASCADE, related_name = 'pizzeria_images',blank=True, null=True)
+    image = models.ImageField(upload_to='photos')
+    image_title = models.CharField(max_length=120,blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-uploaded_at']
