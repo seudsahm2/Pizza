@@ -1,7 +1,17 @@
 from django.shortcuts import render
+
 from rest_framework import generics
+from rest_framework.parsers import MultiPartParser
+
 from .serializers import PizzeriaListSerializer,PizzeriaDetailSerializer
 from .models import Pizzeria
+
+
+import logging
+from rest_framework.response import Response
+from rest_framework import status
+
+logger = logging.getLogger(__name__)
 # Create your views here.
 
 class PizzeriaListAPIView(generics.ListAPIView):
@@ -14,8 +24,19 @@ class PizzeriaRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = PizzeriaDetailSerializer
 
 class PizzeriaCreateAPIView(generics.CreateAPIView):
+    parser_classes = [MultiPartParser]
     queryset = Pizzeria.objects.all()
     serializer_class = PizzeriaDetailSerializer
+
+    def create(self, request, *args, **kwargs):
+        logger.info(f"Received data: {request.data}")
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            logger.info("Data is valid")
+            return super().create(request, *args, **kwargs)
+        else:
+            logger.error(f"Validation errors: {serializer.errors}")
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PizzeriaRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     lookup_field = "id"

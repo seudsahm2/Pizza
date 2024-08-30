@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import ListView from './src/screens/components/function_list_view.js';
 import DetailView from './src/screens/components/detail_view';
 
-import ScreenA from "./src/screens/drawer/screenA.js";
+import AddPizzeria from "./src/screens/drawer/AddPizzeria.js";
 import ScreenB from "./src/screens/drawer/screenB.js";
 import ScreenC from "./src/screens/drawer/screenC.js";
 
@@ -44,7 +44,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="HomeStack" children={this.renderScreenComponents} />
-        <Drawer.Screen name="ScreenA" component = {ScreenA} />
+        <Drawer.Screen name="AddPizzeria" component = {AddPizzeria} />
         <Drawer.Screen name="ScreenB" component = {ScreenB} />
         <Drawer.Screen name="ScreenC" component = {ScreenC} />
       </Drawer.Navigator>

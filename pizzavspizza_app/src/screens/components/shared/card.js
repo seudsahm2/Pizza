@@ -4,11 +4,11 @@ import { View, Image, Text, StyleSheet } from "react-native";
 
 const Card = ({logo, title, details}) => {
     return(
-        <View>
+        <View styele={styles.container}>
             <Image style={styles.logo} source ={{uri: logo}}/>
-            <View>
-                <Text>{title}</Text>
-                <Text>{details}</Text>
+            <View style={styles.inner}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.details}>{details}</Text>
             </View>
         </View>
     )
@@ -22,10 +22,10 @@ styles = StyleSheet.create({
         overflow: "hidden",
         flex: 1,
         borderRadius: 15,
-    },logo: {
+    },
+    logo: {
         width: "100%",
-        height: 200,
-        
+        height: 200, 
     },
     logo: {
         width: "100%",
