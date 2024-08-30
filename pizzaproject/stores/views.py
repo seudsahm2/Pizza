@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth import get_user_model
 
 from rest_framework import generics
 from rest_framework.parsers import MultiPartParser
+from rest_framework import permissions
 
-from .serializers import PizzeriaListSerializer,PizzeriaDetailSerializer
+from .serializers import PizzeriaListSerializer,PizzeriaDetailSerializer, UserSerializer
 from .models import Pizzeria
 
 
@@ -46,3 +48,10 @@ class PizzeriaRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
 class PizzeriaDestroyAPIView(generics.DestroyAPIView):
     lookup_field = "id"
     queryset = Pizzeria.objects.all()   
+
+
+class UserCreateView(generics.CreateAPIView):
+    model = get_user_model()
+    parser_classes = [MultiPartParser]
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserSerializer
