@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "pizzeria":"The empire pizza",
+        "city":"New york"
+    },
+    {
+        "id":2,
+        "pizzeria":"Urbs in horoto pizza",
+        "city":"Chicago"
+    },
+    {
+        "id":3,
+        "pizzeria":"Hollywoodpizza",
+        "city":"Los Angeles"
+    }
+]
