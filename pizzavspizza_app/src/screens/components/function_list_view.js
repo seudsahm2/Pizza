@@ -12,7 +12,7 @@ const ListView = ({navigation}) => {
 
     const getList = async () => {
     
-        const response = await client.get("/")
+        const response = await client.get("/api/")
         setData(response.data)
 
     }

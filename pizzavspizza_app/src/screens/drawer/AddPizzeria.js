@@ -34,6 +34,8 @@ const AddPizzeria = () => {
     }
 
 
+
+
     const handleSubmit = async(values) => {
         const data = new FormData();
         data.append("pizzeria_name", values.pizzeria);
@@ -53,8 +55,10 @@ const AddPizzeria = () => {
         })
 
         try{
-            const response = await client.post('/create/',data, {
-                headers: { 'Content-Type': 'multipart/form-data' }
+            const response = await client.post('api/create/',data, {
+                headers: { 
+                    'Content-Type': 'multipart/form-data'
+                 }
             })
             .then(function(response){
                 console.log(response)

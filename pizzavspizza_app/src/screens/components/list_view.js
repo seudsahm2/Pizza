@@ -17,7 +17,7 @@ class ListView extends Component {
 
     async componentDidMount(){
         try {
-            const response = await client.get("/")
+            const response = await client.get("/api/")
             if(!response.ok) {
                 this.setState({data: response.data})
             }

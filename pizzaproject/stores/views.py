@@ -8,7 +8,6 @@ from rest_framework import permissions
 from .serializers import PizzeriaListSerializer,PizzeriaDetailSerializer, UserSerializer
 from .models import Pizzeria
 
-
 import logging
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,6 +23,7 @@ class PizzeriaRetrieveAPIView(generics.RetrieveAPIView):
     lookup_field = "id"
     queryset = Pizzeria.objects.all()
     serializer_class = PizzeriaDetailSerializer
+
 
 class PizzeriaCreateAPIView(generics.CreateAPIView):
     parser_classes = [MultiPartParser]
